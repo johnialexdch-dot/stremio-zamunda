@@ -1,11 +1,24 @@
 # Използваме официалния Python образ като базов
 FROM python:3.9-slim
 
+# RUN apt-get update && apt-get install -y curl tar && \
+# 	curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared-linux-amd64.deb && \
+# 	dpkg -i cloudflared-linux-amd64.deb && \
+# 	rm cloudflared-linux-amd64.deb && \
+#     apt-get install -y git
+
 RUN apt-get update && apt-get install -y curl tar && \
-	curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared-linux-amd64.deb && \
-	dpkg -i cloudflared-linux-amd64.deb && \
-	rm cloudflared-linux-amd64.deb && \
-    apt-get install -y git
+	if [ "$(uname -m)" = "armv7l" ]; then \
+		curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-armhf.deb -o cloudflared-linux-armhf.deb && \
+		dpkg -i cloudflared-linux-armhf.deb && \
+		rm cloudflared-linux-armhf.deb; \
+	else \
+		curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared-linux-amd64.deb && \
+		dpkg -i cloudflared-linux-amd64.deb && \
+		rm cloudflared-linux-amd64.deb; \
+	fi && \
+	apt-get install -y git
+
 
 # Задаваме работната директория в контейнера
 WORKDIR /app
