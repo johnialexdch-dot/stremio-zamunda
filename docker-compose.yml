@@ -1,7 +1,6 @@
 services:
   stremio-zamunda:
-    image: stremio-zamunda
-    build: .
+    image: ghcr.io/murrou-cell/stremio-zamunda:main
     ports:
       - "7000:7000"
     restart: always
