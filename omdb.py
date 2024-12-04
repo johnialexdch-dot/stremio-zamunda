@@ -5,7 +5,7 @@ class Omdb:
         self.logger = logger
 
     def get_series_title(self,imdbId,season,episode,OMDBkey):
-        url = f"http://www.omdbapi.com/?i={imdbId}&season={season}&episode={episode}&apikey={OMDBkey}"
+        url = f"https://www.omdbapi.com/?i={imdbId}&season={season}&episode={episode}&apikey={OMDBkey}"
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
@@ -15,7 +15,7 @@ class Omdb:
             return None
         
     def get_movie_title(self,imdbId,OMDBkey):
-        url = f"http://www.omdbapi.com/?i={imdbId}&apikey={OMDBkey}"
+        url = f"https://www.omdbapi.com/?i={imdbId}&apikey={OMDBkey}"
         response = requests.get(url)
         if response.status_code == 200:
             data = response.json()
