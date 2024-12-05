@@ -33,6 +33,13 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+#redirect to manifest.json
+@app.get("/")
+def redirect_to_manifest():
+    return HTMLResponse('<script>window.location.href = "/manifest.json";</script>')
+
+app.get("/")(redirect_to_manifest)
+
 @app.get("/manifest.json")
 def get_manifest():
     return manifest
