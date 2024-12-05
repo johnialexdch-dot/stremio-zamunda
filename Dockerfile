@@ -36,5 +36,5 @@ COPY . .
 EXPOSE 7000
 
 # Стартираме приложението чрез Uvicorn
-CMD ["sh", "-c", "cloudflared tunnel --url http://localhost:7000 & uvicorn main:app --host 0.0.0.0 --port 7000"]
+CMD ["sh", "-c", "pip install --no-cache-dir -r requirements.txt && cloudflared tunnel --url http://localhost:7000 & uvicorn main:app --host 0.0.0.0 --port 7000"]
 
