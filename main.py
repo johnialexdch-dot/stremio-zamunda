@@ -21,7 +21,7 @@ def buildStream(torrent,bgAudio):
         return None
     return {
         "name": f"Zamunda.net\n {'🇧🇬🔊' if torrent['bg_audio'] else ''} 💾{torrent['size']} - 👤{torrent['seeders']}",
-        "externalUrl": torrent["magnetlink"],
+        "infoHash": torrent["infohash"],
         "description": f"{torrent['name']}"
     }
 
@@ -122,7 +122,7 @@ def get_stream(configuration:str, type: str, id: str):
         title = omdb.get_movie_title(id,omdbKey)
         if title is None:
             return {"error": "Could not find movie"}
-        zamundaData = zamunda.search(title,username,password,True)
+        zamundaData = zamunda.search(title,username,password,False,True)
         if zamundaData is None:
             return {"error": "Could not find movie"}
         streams = []
@@ -137,7 +137,7 @@ def get_stream(configuration:str, type: str, id: str):
         title = omdb.get_series_title(imdbId,season,episode,omdbKey)
         if title is None:
             return {"error": "Could not find series"}
-        zamundaData = zamunda.search(title,username,password,True)
+        zamundaData = zamunda.search(title,username,password,False,True)
         if zamundaData is None:
             return {"error": "Could not find series"}
         streams = []
