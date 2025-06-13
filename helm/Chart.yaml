@@ -1,0 +1,5 @@
+apiVersion: v2
+name: stremio-zamunda
+description: A Helm chart for stremio-zamunda
+version: 0.1.0
+appVersion: "latest"

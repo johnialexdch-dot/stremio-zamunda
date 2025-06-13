@@ -1,0 +1,21 @@
+readme:
+  - path: stremio-zamunda
+    img: https://yt3.googleusercontent.com/lP9pvWr1v2iNgweIH4lfq_Qi-6Kp2o7AK9hwcBrZOqu69zzKYBOv0We9yQlWI6SBtBKX1m0PgQ=s900-c-k-c0x00ffffff-no-rj
+
+tailscaleIngress:
+  enabled: true
+  host: stremio-zamunda
+  serviceName: stremio-zamunda
+  servicePort: 7000
+  funnel: true
+
+image:
+  repository: ghcr.io/murrou-cell/stremio-zamunda
+  tag: main
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 7000
+
+containerPort: 7000
