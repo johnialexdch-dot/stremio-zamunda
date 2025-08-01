@@ -20,11 +20,12 @@ spec:
       imagePullPolicy: {{ .Values.image.pullPolicy }}
       ports:
         - containerPort: {{ .Values.containerPort }}
-      env:
-        - name: OMDB_API_KEY
-          value: "3715ba65"
-        - name: laff
-          value: "ваш-замунда-потребител"
-        - name: ZAMUNDA_PASSWORD
-          value: "3825915009"
-        - name: BG_AUDIO
+env:
+  - name: OMDB_API_KEY
+    value: "{{ .Values.env.omdbApiKey }}"
+  - name: ZAMUNDA_USERNAME
+    value: "{{ .Values.env.zamundaUser }}"
+  - name: ZAMUNDA_PASSWORD
+    value: "{{ .Values.env.zamundaPass }}"
+  - name: BG_AUDIO
+    value: "{{ .Values.env.bgAudio }}"
