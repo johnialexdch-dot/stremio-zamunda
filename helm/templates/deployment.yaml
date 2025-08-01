@@ -13,10 +13,18 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}
-    spec:
-      containers:
-        - name: stremio-zamunda
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: {{ .Values.containerPort }}
+spec:
+  containers:
+    - name: stremio-zamunda
+      image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      imagePullPolicy: {{ .Values.image.pullPolicy }}
+      ports:
+        - containerPort: {{ .Values.containerPort }}
+      env:
+        - name: OMDB_API_KEY
+          value: "3715ba65"
+        - name: laff
+          value: "ваш-замунда-потребител"
+        - name: ZAMUNDA_PASSWORD
+          value: "3825915009"
+        - name: BG_AUDIO
