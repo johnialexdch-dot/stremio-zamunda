@@ -19,3 +19,8 @@ service:
   port: 7000
 
 containerPort: 7000
+env:
+  omdbApiKey: "your_key"
+  zamundaUser: "user"
+  zamundaPass: "pass"
+  bgAudio: "on"
