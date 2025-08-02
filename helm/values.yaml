@@ -12,7 +12,7 @@ tailscaleIngress:
 image:
   repository: ghcr.io/murrou-cell/stremio-zamunda
   tag: main
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 service:
   type: ClusterIP
