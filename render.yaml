@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: stremio-zamunda
+    env: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: OMDB_API_KEY
+        value: your_omdb_api_key
+      - key: ZAMUNDA_USER
+        value: your_zamunda_username
+      - key: ZAMUNDA_PASS
+        value: your_zamunda_password
