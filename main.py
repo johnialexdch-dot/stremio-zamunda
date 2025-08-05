@@ -165,9 +165,14 @@ def clear_expired_cache():
                 cache.pop(key)
         logger.info(f"Cleared cache for {len(cache)} items")
 
+import os
+import uvicorn
+
 if __name__ == "__main__":
-    threading.Thread(target=clear_expired_cache).start()
-    uvicorn.run(app, host="0.0.0.0", port=7000)
+    port = int(os.environ.get("PORT", 8000))  # Вземи порта от средата или 8000 по подразбиране
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
 
 
     
+
