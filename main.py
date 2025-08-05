@@ -9,7 +9,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi.responses import HTMLResponse
 logger = logging.getLogger("uvicorn")
-zamunda = Zamunda()
+from os import getenv
+
+zamunda = Zamunda(
+    base_url="https://zamunda.net",
+    user=getenv("coyec75395"),
+    password=getenv("rxM6N.h2N4aYe7_")
+)
+
 omdb = Omdb(logger)
 app = FastAPI()
 
@@ -175,4 +182,5 @@ if __name__ == "__main__":
 
 
     
+
 
