@@ -4,12 +4,12 @@ services:
     env: docker
     plan: free
     region: frankfurt
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ./Dockerfile.render  # <-- важно!
     autoDeploy: true
     envVars:
       - key: OMDB_API_KEY
-        value: your_omdb_api_key
+        value: вашия_omdb_ключ
       - key: ZAMUNDA_USER
-        value: your_zamunda_username
+        value: вашето_потребителско_име
       - key: ZAMUNDA_PASS
-        value: your_zamunda_password
+        value: вашата_парола
