@@ -1,4 +1,9 @@
 import logging
+
+logger = logging.getLogger("zamunda-api")
+logger.setLevel(logging.INFO)
+
+import logging
 import threading
 import time
 from zamunda_api.zamunda import Zamunda 
@@ -191,6 +196,7 @@ if __name__ == "__main__":
 
 
     
+
 
 
 
