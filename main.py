@@ -5,17 +5,25 @@ from zamunda_api.zamunda import Zamunda
 from manifest import manifest
 from omdb import Omdb
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
-from fastapi.responses import HTMLResponse
-logger = logging.getLogger("uvicorn")
 from os import getenv
+from zamunda_api import Zamunda
 
-zamunda = Zamunda(
-    base_url="https://zamunda.net",
-    user=getenv("ZAMUNDA_USER"),
-    password=getenv("ZAMUNDA_PASS")
-)
+app = FastAPI()
+
+@app.on_event("startup")
+async def startup_event():
+    try:
+        user = getenv("ZAMUNDA_USER")
+        password = getenv("ZAMUNDA_PASS")
+        zamunda = Zamunda(
+            base_url="https://zamunda.net",
+            user=user,
+            password=password
+        )
+        print("✅ Zamunda login successful.")
+    except Exception as e:
+        print("❌ Zamunda login failed:", str(e))
+
 
 
 omdb = Omdb(logger)
@@ -183,6 +191,7 @@ if __name__ == "__main__":
 
 
     
+
 
 
 
