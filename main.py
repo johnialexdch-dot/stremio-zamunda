@@ -13,9 +13,10 @@ from os import getenv
 
 zamunda = Zamunda(
     base_url="https://zamunda.net",
-    user=getenv("coyec75395"),
-    password=getenv("rxM6N.h2N4aYe7_")
+    user=getenv("ZAMUNDA_USER"),
+    password=getenv("ZAMUNDA_PASS")
 )
+
 
 omdb = Omdb(logger)
 app = FastAPI()
@@ -182,5 +183,6 @@ if __name__ == "__main__":
 
 
     
+
 
 
